@@ -77,14 +77,27 @@ $results = $service->events->listEvents($calendarId, $optParams);
 $events = $results->getItems();
 
 if (empty($events)) {
-    print "No upcoming events found.\n";
+    print "Aucun événement prochain trouvé.\n"."<br/>";
 } else {
-    print "Upcoming events:\n";
+    print "Évènements à venir:\n"."<br/>";
     foreach ($events as $event) {
-        $start = $event->start->dateTime;
+        $start = $event->start->dateTime. "<br/> \n";
         if (empty($start)) {
-            $start = $event->start->date;
+            $start = $event->start->date. "<br/> \n";
         }
         printf("%s (%s)\n", $event->getSummary(), $start);
     }
+
+    // Création d'un event
+//    $createdEvent = $service->events->quickAdd(
+//        'primary',
+//        'Appointment at Somewhere on June 3rd 10am-10:25am');
+
+     //echo $createdEvent->getId();
+
+    //        $optParams = array ( ' filter ' => ' free-ebooks ' );
+//        $resultats = $service -> volumes -> listVolumes ( ' Henry David Thoreau ' , $optParams );
+//        foreach ( $resultats as $item ) {
+//            echo $item [ 'volumeInfo' ] [ 'titre' ], "<br/> \n" ;
+//        }
 }
